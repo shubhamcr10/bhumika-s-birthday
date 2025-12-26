@@ -4,25 +4,25 @@ import { introLines } from "./introData";
 export default function Intro({ onFinish }) {
   const [lineIndex, setLineIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
-  const [displayedLines, setDisplayedLines] = useState([]);
+  const [printedLines, setPrintedLines] = useState([]);
 
   const currentLine = introLines[lineIndex];
 
   useEffect(() => {
     if (!currentLine) return;
 
-    // typing characters
+    // type characters one by one
     if (charIndex < currentLine.text.length) {
       const t = setTimeout(() => {
         setCharIndex(c => c + 1);
-      }, 60); // 👈 typing speed (slower = higher number)
+      }, 70); // ⬅ typing speed (increase = slower)
       return () => clearTimeout(t);
     }
 
-    // line finished → pause → move to next line
+    // line finished → pause → next line
     if (charIndex === currentLine.text.length) {
       const pause = setTimeout(() => {
-        setDisplayedLines(lines => [...lines, currentLine.text]);
+        setPrintedLines(lines => [...lines, currentLine.text]);
         setCharIndex(0);
         setLineIndex(i => i + 1);
       }, currentLine.delayAfter);
@@ -30,7 +30,7 @@ export default function Intro({ onFinish }) {
     }
   }, [charIndex, lineIndex]);
 
-  // all lines finished
+  // finished all lines
   useEffect(() => {
     if (lineIndex === introLines.length) {
       const end = setTimeout(onFinish, 1200);
@@ -40,17 +40,17 @@ export default function Intro({ onFinish }) {
 
   return (
     <div className="h-screen flex items-center justify-center bg-black">
-      <div className="text-3xl leading-relaxed text-left">
-        {displayedLines.map((line, i) => (
-          <div key={i} className="mb-4">
+      <div className="text-2xl leading-relaxed text-left">
+        {printedLines.map((line, i) => (
+          <div key={i} className="mb-3">
             {line}
           </div>
         ))}
 
         {currentLine && (
-          <div className="mb-4">
+          <div className="mb-3">
             {currentLine.text.slice(0, charIndex)}
-            <span className="animate-pulse">▌</span>
+            <span className="ml-1 animate-pulse">_</span>
           </div>
         )}
       </div>
