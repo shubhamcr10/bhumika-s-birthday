@@ -15,5 +15,5 @@ This project creates a smooth animated intro followed by an interactive cake sce
 
 ---
 
-## 📁 Project Structure
-
+## 📁 Deployment Page
+https://shubhamcr10.github.io/bhumika-s-birthday/
