@@ -1,31 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Interactive Cake</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<!-- TEXT SCREEN -->
-<section id="intro">
-  <div id="text"></div>
-</section>
-
-<!-- CAKE SCREEN -->
-<section id="cake-section" class="hidden">
-  <img src="assets/cake.png" class="cake">
-
-  <div class="note" data-text="This is a sweet memory 💖">📝</div>
-  <div class="photo" data-img="assets/img1.jpg">📷</div>
-</section>
-
-<!-- MODAL -->
-<div id="modal" class="hidden">
-  <span id="close">✖</span>
-  <div id="modal-content"></div>
-</div>
-
-<script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Cake Experience</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
