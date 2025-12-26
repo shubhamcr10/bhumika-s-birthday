@@ -5,6 +5,20 @@ import TransitionOverlay from "../components/TransitionOverlay";
 
 export default function Home() {
   const [stage, setStage] = useState("intro");
+  const [showOverlay, setShowOverlay] = useState(false);
+
+  useEffect(() => {
+    if (stage === "transition") {
+      setShowOverlay(true);
+
+      const t = setTimeout(() => {
+        setShowOverlay(false);
+        setStage("cake");
+      }, 900);
+
+      return () => clearTimeout(t);
+    }
+  }, [stage]);
 
   return (
     <>
@@ -12,22 +26,9 @@ export default function Home() {
         <Intro onFinish={() => setStage("transition")} />
       )}
 
-      <TransitionOverlay show={stage === "transition"} />
-
-      {stage === "transition" && (
-        <DelayedCake onDone={() => setStage("cake")} />
-      )}
+      <TransitionOverlay show={showOverlay} />
 
       {stage === "cake" && <CakeScene />}
     </>
   );
-}
-
-function DelayedCake({ onDone }) {
-  useEffect(() => {
-    const t = setTimeout(onDone, 900);
-    return () => clearTimeout(t);
-  }, []);
-
-  return null;
 }
