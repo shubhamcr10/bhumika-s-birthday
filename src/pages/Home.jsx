@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Intro from "../components/Intro/Intro";
 import CakeScene from "../components/CakeScene/CakeScene";
 import TransitionOverlay from "../components/TransitionOverlay";
@@ -24,7 +24,10 @@ export default function Home() {
 }
 
 function DelayedCake({ onDone }) {
-  // small cinematic pause
-  setTimeout(onDone, 900);
+  useEffect(() => {
+    const t = setTimeout(onDone, 900);
+    return () => clearTimeout(t);
+  }, []);
+
   return null;
 }
