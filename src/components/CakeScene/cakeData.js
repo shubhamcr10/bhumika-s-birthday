@@ -10,7 +10,7 @@ export const cakeItems = [
     id: "photo1",
     type: "photo",
     icon: "📸",
-    image: "/img1.jpg",
+    image: "img1.jpg",
     position: { top: "30%", left: "60%" }
   }
 ];

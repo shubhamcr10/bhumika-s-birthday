@@ -14,7 +14,7 @@ export default function CakeScene() {
       transition={{ duration: 1.2 }}
     >
       <motion.img
-        src="/cake.png"
+        src="cake.png"
         className="w-[320px]"
         initial={{ y: 200 }}
         animate={{ y: 0 }}
