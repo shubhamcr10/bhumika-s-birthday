@@ -1,56 +1,33 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
-import { cakeItems } from "./cakeData";
-import Modal from "../Modal/Modal";
+import Table from "./Table";
+import PhotoFrame from "./PhotoFrame";
+import Cake from "./Cake";
+import { photos } from "./cakeData";
 
 export default function CakeScene() {
-  const [activeItem, setActiveItem] = useState(null);
-  const [showItems, setShowItems] = useState(false);
-
-  useEffect(() => {
-    const t = setTimeout(() => setShowItems(true), 1200);
-    return () => clearTimeout(t);
-  }, []);
-
   return (
-    <motion.div
-      className="h-screen relative flex items-end justify-center bg-[#0b0b0b]"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-    >
-      {/* Table shadow */}
-      <div className="absolute bottom-0 w-full h-40 bg-gradient-to-t from-black to-transparent" />
+    <div className="h-screen w-full relative bg-black overflow-hidden">
 
-      {/* Cake reveal */}
-      <motion.img
-        src="cake.png"
-        className="w-[320px] relative z-10"
-        initial={{ y: 240, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1.4, ease: "easeOut" }}
-      />
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#050505] to-black" />
 
-      {/* Interactive icons appear later */}
-      {showItems &&
-        cakeItems.map(item => (
-          <motion.div
-            key={item.id}
-            className="absolute text-4xl cursor-pointer"
-            style={item.position}
-            initial={{ opacity: 0, scale: 0.6 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            whileHover={{ scale: 1.2 }}
-            onClick={() => setActiveItem(item)}
-          >
-            {item.icon}
-          </motion.div>
+      {/* Table + items */}
+      <Table>
+        {/* Photos */}
+        {photos.map((photo, i) => (
+          <PhotoFrame
+            key={photo.id}
+            src={photo.src}
+            style={photo.position}
+            delay={0.6 + i * 0.2}
+          />
         ))}
 
-      {activeItem && (
-        <Modal item={activeItem} onClose={() => setActiveItem(null)} />
-      )}
-    </motion.div>
+        {/* Cake in center */}
+        <div className="absolute bottom-[22%] flex justify-center w-full">
+          <Cake />
+        </div>
+      </Table>
+    </div>
   );
 }

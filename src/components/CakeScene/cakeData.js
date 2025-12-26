@@ -1,16 +1,22 @@
-export const cakeItems = [
+export const photos = [
   {
-    id: "note1",
-    type: "note",
-    icon: "📝",
-    text: "This is a beautiful memory ❤️",
-    position: { top: "30%", left: "40%" }
+    id: 1,
+    src: "img1.jpg",
+    position: { left: "10%" }
   },
   {
-    id: "photo1",
-    type: "photo",
-    icon: "📸",
-    image: "img1.jpg",
-    position: { top: "30%", left: "60%" }
+    id: 2,
+    src: "img2.jpg",
+    position: { left: "30%" }
+  },
+  {
+    id: 3,
+    src: "img1.jpg",
+    position: { right: "30%" }
+  },
+  {
+    id: 4,
+    src: "img2.jpg",
+    position: { right: "10%" }
   }
 ];
