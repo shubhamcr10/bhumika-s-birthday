@@ -1,4 +1,4 @@
-export default function PhotoFrame({ src }) {
+export default function PhotoFrame({ src, rotate = 0 }) {
   return (
     <div
       style={{
@@ -6,7 +6,8 @@ export default function PhotoFrame({ src }) {
         height: "160px",
         background: "white",
         padding: "8px",
-        boxShadow: "0 20px 40px rgba(0,0,0,0.6)"
+        boxShadow: "0 20px 40px rgba(0,0,0,0.6)",
+        transform: `rotate(${rotate}deg)`
       }}
     >
       <img

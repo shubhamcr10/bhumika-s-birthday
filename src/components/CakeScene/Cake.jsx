@@ -4,7 +4,7 @@ export default function Cake() {
       src="cake.png"
       alt="Cake"
       style={{
-        width: "220px",
+        width: "260px",
         display: "block"
       }}
     />

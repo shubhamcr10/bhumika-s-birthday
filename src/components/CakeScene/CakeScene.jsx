@@ -9,11 +9,11 @@ export default function CakeScene() {
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-[#050505] to-black" />
 
-      {/* Table + items */}
+      {/* Table Scene */}
       <Table>
-        <PhotoFrame src="img1.jpg" />
+        <PhotoFrame src="img1.jpg" rotate={-6} />
         <Cake />
-        <PhotoFrame src="img2.jpg" />
+        <PhotoFrame src="img2.jpg" rotate={6} />
       </Table>
 
     </div>
